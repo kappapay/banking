@@ -1,7 +1,7 @@
 package swift
 
 import (
-	"github.com/jbub/banking/country"
+	"github.com/kappapay/banking/country"
 )
 
 const (
