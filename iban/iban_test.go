@@ -52,6 +52,16 @@ var (
 			nationalCheckDigit: "34",
 		},
 		{
+			iban:               "CM2110002000300277976315008",
+			countryCode:        "CM",
+			checkDigit:         "21",
+			bankCode:           "10002",
+			branchCode:         "00030",
+			accountNumber:      "02779763150",
+			nationalCheckDigit: "08",
+			bban:               "10002000300277976315008",
+		},
+		{
 			iban:          "EG800002000156789012345180002",
 			countryCode:   "EG",
 			checkDigit:    "80",
