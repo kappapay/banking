@@ -4,6 +4,7 @@
 [![Go Report Card](https://goreportcard.com/badge/github.com/kappapay/banking)](https://goreportcard.com/report/github.com/kappapay/banking)
 
 Banking library for Go.
+This is a fork of the Banking library for Go. It adds IBAN validation support for [partial IBAN countries](https://www.iban.com/structure).
 
 ## Install
 
