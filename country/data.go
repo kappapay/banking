@@ -1,7 +1,7 @@
 package country
 
 import (
-	"github.com/jbub/banking/bban"
+	"github.com/kappapay/banking/bban"
 )
 
 var (
@@ -115,6 +115,17 @@ var (
 				bban.NewBranchCode(4, bban.Num),
 				bban.NewAccountType(2, bban.Num),
 				bban.NewAccountNumber(8, bban.AlphaNum),
+			),
+		},
+		"CM": {
+			Name:       "Cameroon",
+			Alpha2Code: "CM",
+			Alpha3Code: "CMR",
+			Structure: bban.NewStructure(
+				bban.NewBankCode(5, bban.Num),
+				bban.NewBranchCode(5, bban.Num),
+				bban.NewAccountNumber(11, bban.Num),
+				bban.NewNationalCheckDigit(2, bban.Num),
 			),
 		},
 		"CR": {

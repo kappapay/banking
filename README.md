@@ -1,19 +1,20 @@
 # banking 
-[![GoDoc](http://img.shields.io/badge/go-documentation-blue.svg?style=flat-square)](http://godoc.org/github.com/jbub/banking) 
+[![GoDoc](http://img.shields.io/badge/go-documentation-blue.svg?style=flat-square)](http://godoc.org/github.com/kappapay/banking) 
 [![Build Status](https://cloud.drone.io/api/badges/jbub/banking/status.svg)](https://cloud.drone.io/jbub/banking)
-[![Go Report Card](https://goreportcard.com/badge/github.com/jbub/banking)](https://goreportcard.com/report/github.com/jbub/banking)
+[![Go Report Card](https://goreportcard.com/badge/github.com/kappapay/banking)](https://goreportcard.com/report/github.com/kappapay/banking)
 
 Banking library for Go.
+This is a fork of the Banking library for Go. It adds IBAN validation support for [partial IBAN countries](https://www.iban.com/structure).
 
 ## Install
 
 ```bash
-go get github.com/jbub/banking
+go get github.com/kappapay/banking
 ```
 
 ## Docs
 
-http://godoc.org/github.com/jbub/banking
+http://godoc.org/github.com/kappapay/banking
 
 ## Iban
 
@@ -24,7 +25,7 @@ import (
     "fmt"
     "log"
 
-    "github.com/jbub/banking/iban"
+    "github.com/kappapay/banking/iban"
 )
 
 var (
@@ -56,7 +57,7 @@ import (
     "fmt"
     "log"
 
-    "github.com/jbub/banking/swift"
+    "github.com/kappapay/banking/swift"
 )
 
 var (

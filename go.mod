@@ -1,4 +1,4 @@
-module github.com/jbub/banking
+module github.com/kappapay/banking
 
 go 1.17
 
