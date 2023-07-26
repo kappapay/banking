@@ -5,7 +5,7 @@ import (
 )
 
 var (
-	countries = map[string]Country{
+	Countries = map[string]Country{
 		"AL": {
 			Name:       "Albania",
 			Alpha2Code: "AL",

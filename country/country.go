@@ -19,13 +19,13 @@ func (c Country) String() string {
 
 // Exists returns true if country code exists.
 func Exists(code string) bool {
-	_, ok := countries[code]
+	_, ok := Countries[code]
 	return ok
 }
 
 // Get returns country by given country code.
 func Get(code string) (Country, bool) {
-	country, ok := countries[code]
+	country, ok := Countries[code]
 	return country, ok
 }
 
