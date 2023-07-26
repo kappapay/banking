@@ -9,14 +9,16 @@ import (
 
 // Error codes returned by failures to validate an iban.
 var (
-	ErrIbanTooShort          = errors.New("iban: iban too short")
-	ErrCountryCodeNotUpper   = errors.New("iban: country code contains lowercase letters")
-	ErrCountryCodeNotAlpha   = errors.New("iban: country code contains non alphabetic letters")
-	ErrCountryCodeNotPresent = errors.New("iban: country code does not exist")
-	ErrInvalidCheckDigit     = errors.New("iban: invalid check digit")
-	ErrInvalidIbanModulo     = errors.New("iban: invalid modulo")
-	ErrInvalidBbanLength     = errors.New("iban: invalid bban length")
-	ErrInvalidBbanPart       = errors.New("iban: invalid bban part")
+	ErrIbanTooShort             = errors.New("iban: iban too short")
+	ErrCountryCodeNotUpper      = errors.New("iban: country code contains lowercase letters")
+	ErrCountryCodeNotAlpha      = errors.New("iban: country code contains non alphabetic letters")
+	ErrCountryCodeNotPresent    = errors.New("iban: country code does not exist")
+	ErrInvalidCheckDigit        = errors.New("iban: invalid check digit")
+	ErrInvalidIbanModulo        = errors.New("iban: invalid modulo")
+	ErrInvalidBbanLength        = errors.New("iban: invalid bban length")
+	ErrInvalidBbanPart          = errors.New("iban: invalid bban part")
+	ErrInvalidNumberOfBbanParts = errors.New("iban: invalid number of bban parts")
+	ErrConstructedIbanInvalid   = errors.New("iban: constructed iban is invalid")
 )
 
 // Iban represents iban code. Zero value is not usable.

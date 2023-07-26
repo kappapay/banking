@@ -498,3 +498,218 @@ func BenchmarkValidate(b *testing.B) {
 		_ = Validate("AL47212110090000000235698741")
 	}
 }
+
+func TestConstructSucceeds(t *testing.T) {
+
+	testCases := []struct {
+		iban               string
+		countryCode        string
+		bankCode           string
+		branchCode         string
+		accountNumber      string
+		nationalCheckDigit string
+	}{
+		{
+			iban:          "BY13NBRB3600900000002Z00AB00",
+			countryCode:   "BY",
+			bankCode:      "NBRB",
+			branchCode:    "3600",
+			accountNumber: "900000002Z00AB00",
+		},
+		{
+			iban:               "BE68539007547034",
+			countryCode:        "BE",
+			bankCode:           "539",
+			accountNumber:      "0075470",
+			nationalCheckDigit: "34",
+		},
+		{
+			iban:               "CM2110002000300277976315008",
+			countryCode:        "CM",
+			bankCode:           "10002",
+			branchCode:         "00030",
+			accountNumber:      "02779763150",
+			nationalCheckDigit: "08",
+		},
+		{
+			iban:          "EG800002000156789012345180002",
+			countryCode:   "EG",
+			bankCode:      "0002",
+			branchCode:    "0001",
+			accountNumber: "56789012345180002",
+		},
+		{
+			iban:               "FO6264600001631634",
+			countryCode:        "FO",
+			bankCode:           "6460",
+			accountNumber:      "000163163",
+			nationalCheckDigit: "4",
+		},
+		{
+			iban:          "GL8964710001000206",
+			countryCode:   "GL",
+			bankCode:      "6471",
+			accountNumber: "0001000206",
+		},
+		{
+			iban:          "GR1601101250000000012300695",
+			countryCode:   "GR",
+			bankCode:      "011",
+			branchCode:    "0125",
+			accountNumber: "0000000012300695",
+		},
+		{
+			iban:          "GB29NWBK60161331926819",
+			countryCode:   "GB",
+			bankCode:      "NWBK",
+			branchCode:    "601613",
+			accountNumber: "31926819",
+		},
+		{
+			iban:          "IQ98NBIQ850123456789012",
+			countryCode:   "IQ",
+			bankCode:      "NBIQ",
+			branchCode:    "850",
+			accountNumber: "123456789012",
+		},
+		{
+			iban:          "SA0380000000608010167519",
+			countryCode:   "SA",
+			bankCode:      "80",
+			accountNumber: "000000608010167519",
+		},
+		{
+			iban:          "CH9300762011623852957",
+			countryCode:   "CH",
+			bankCode:      "00762",
+			accountNumber: "011623852957",
+		},
+		{
+			iban:               "TL380080012345678910157",
+			countryCode:        "TL",
+			bankCode:           "008",
+			accountNumber:      "00123456789101",
+			nationalCheckDigit: "57",
+		},
+		{
+			iban:          "SK0611000000002920884960",
+			countryCode:   "SK",
+			bankCode:      "1100",
+			accountNumber: "0000002920884960",
+		},
+		{
+			iban:               "NO9386011117947",
+			countryCode:        "NO",
+			bankCode:           "8601",
+			accountNumber:      "111794",
+			nationalCheckDigit: "7",
+		},
+		{
+			iban:          "VA59001123000012345678",
+			countryCode:   "VA",
+			bankCode:      "001",
+			accountNumber: "123000012345678",
+		},
+		{
+			iban:          "XK051212012345678906",
+			countryCode:   "XK",
+			bankCode:      "1212",
+			accountNumber: "012345678906",
+		},
+		{
+			iban:          "LC55HEMM000100010012001200023015",
+			countryCode:   "LC",
+			bankCode:      "HEMM",
+			accountNumber: "000100010012001200023015",
+		},
+		{
+			iban:          "UA213996220000026007233566001",
+			countryCode:   "UA",
+			bankCode:      "399622",
+			accountNumber: "0000026007233566001",
+		},
+	}
+
+	for _, cs := range testCases {
+		t.Run(cs.iban, func(t *testing.T) {
+
+			bbanParts := []string{}
+
+			if cs.bankCode != "" {
+				bbanParts = append(bbanParts, cs.bankCode)
+			}
+			if cs.branchCode != "" {
+				bbanParts = append(bbanParts, cs.branchCode)
+			}
+			if cs.accountNumber != "" {
+				bbanParts = append(bbanParts, cs.accountNumber)
+			}
+			if cs.nationalCheckDigit != "" {
+				bbanParts = append(bbanParts, cs.nationalCheckDigit)
+			}
+
+			ib, err := Construct(cs.countryCode, bbanParts...)
+
+			require.NoError(t, err)
+			require.Equal(t, cs.iban, ib.String())
+
+		})
+	}
+}
+
+func TestConstructFails(t *testing.T) {
+
+	testCases := []struct {
+		countryCode        string
+		bankCode           string
+		branchCode         string
+		accountNumber      string
+		nationalCheckDigit string
+		err                error
+	}{
+		{
+			countryCode:   "MU",
+			bankCode:      "BOMM01",
+			accountNumber: "101030300200",
+			branchCode:    "01",
+			err:           ErrInvalidNumberOfBbanParts,
+		},
+		{
+			countryCode: "XX",
+			err:         ErrCountryCodeNotPresent,
+		},
+		{
+			countryCode:   "BY",
+			bankCode:      "NBRB",
+			branchCode:    "KY60", // should be numeric
+			accountNumber: "900000002Z00AB00",
+			err:           ErrInvalidBbanPart,
+		},
+	}
+
+	for _, cs := range testCases {
+		t.Run(cs.countryCode, func(t *testing.T) {
+
+			bbanParts := []string{}
+
+			if cs.bankCode != "" {
+				bbanParts = append(bbanParts, cs.bankCode)
+			}
+			if cs.branchCode != "" {
+				bbanParts = append(bbanParts, cs.branchCode)
+			}
+			if cs.accountNumber != "" {
+				bbanParts = append(bbanParts, cs.accountNumber)
+			}
+			if cs.nationalCheckDigit != "" {
+				bbanParts = append(bbanParts, cs.nationalCheckDigit)
+			}
+
+			_, err := Construct(cs.countryCode, bbanParts...)
+
+			require.Error(t, err)
+			require.Equal(t, cs.err, err)
+
+		})
+	}
+}
