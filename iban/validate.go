@@ -145,6 +145,30 @@ func extractBbanPart(value string, struc bban.Structure, entryType bban.EntryTyp
 	return ""
 }
 
+// extractBbanParts takes a BBAN string and attempts to segment it into its parts according to the given structure
+func extractBbanParts(value string, struc bban.Structure) ([]string, error) {
+
+	if len(value) != struc.Length() {
+		return []string{}, ErrInvalidBbanLength
+	}
+
+	parts := make([]string, 0, len(struc.Parts()))
+	var offset int
+
+	for _, part := range struc.Parts() {
+		value := value[offset : offset+part.Length]
+
+		if !part.Validate(value) {
+			return []string{}, ErrInvalidBbanPart
+		}
+
+		parts = append(parts, value)
+		offset += part.Length
+	}
+	return parts, nil
+
+}
+
 func extractBankCode(value string, struc bban.Structure) string {
 	return extractBbanPart(value, struc, bban.BankCode)
 }

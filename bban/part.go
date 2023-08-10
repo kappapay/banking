@@ -17,6 +17,11 @@ func (p Part) String() string {
 	return p.EntryType.String()
 }
 
+// CharType returns the charType of part.
+func (p Part) CharType() charType {
+	return p.charType
+}
+
 // NewPart creates a new Part.
 func NewPart(length int, char charType, entry EntryType) Part {
 	return Part{
