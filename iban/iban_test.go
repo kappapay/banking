@@ -713,3 +713,20 @@ func TestConstructFails(t *testing.T) {
 		})
 	}
 }
+
+func TestRandIban(t *testing.T) {
+
+	// Tests generating IBANs for all supported countries
+
+	for _, c := range country.Countries {
+		t.Run(c.Name, func(t *testing.T) {
+
+			v, err := Rand(c.Alpha2Code, "")
+			require.NoError(t, err)
+
+			err = Validate(v.String())
+			require.NoError(t, err)
+
+		})
+	}
+}
