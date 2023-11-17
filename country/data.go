@@ -128,6 +128,15 @@ var (
 				bban.NewNationalCheckDigit(2, bban.Num),
 			),
 		},
+		"CN": {
+			Name:       "China",
+			Alpha2Code: "CN",
+			Alpha3Code: "CHN",
+			Structure: bban.NewStructure(
+				bban.NewBankCode(4, bban.Num),
+				bban.NewBranchCode(3, bban.Num),
+			),
+		},
 		"CR": {
 			Name:       "Costa Rica",
 			Alpha2Code: "CR",

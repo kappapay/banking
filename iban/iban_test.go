@@ -716,10 +716,17 @@ func TestConstructFails(t *testing.T) {
 
 func TestRandIban(t *testing.T) {
 
+	countriesNotSupportingIban := map[string]struct{}{
+		"CN": {},
+	}
 	// Tests generating IBANs for all supported countries
 
 	for _, c := range country.Countries {
 		t.Run(c.Name, func(t *testing.T) {
+			// skip countries that don't support IBAN
+			if _, ok := countriesNotSupportingIban[c.Alpha2Code]; ok {
+				return
+			}
 
 			v, err := Rand(c.Alpha2Code, "")
 			require.NoError(t, err)
