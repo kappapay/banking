@@ -300,6 +300,15 @@ var (
 				bban.NewAccountNumber(20, bban.AlphaNum),
 			),
 		},
+		"HK": {
+			Name:       "Hong Kong",
+			Alpha2Code: "HK",
+			Alpha3Code: "HKG",
+			Structure: bban.NewStructure(
+				bban.NewBankCode(4, bban.Num),
+				bban.NewBranchCode(3, bban.Num),
+			),
+		},
 		"HU": {
 			Name:       "Hungary",
 			Alpha2Code: "HU",
