@@ -47,6 +47,14 @@ var (
 			branchCode:   "220",
 			typ:          Type11,
 		},
+		{
+			swift:        "HSBCHKHHHKH",
+			bankCode:     "HSBC",
+			countryCode:  "HK",
+			locationCode: "HH",
+			branchCode:   "HKH",
+			typ:          Type11,
+		},
 	}
 	invalidCases = []struct {
 		swift string

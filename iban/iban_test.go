@@ -718,6 +718,7 @@ func TestRandIban(t *testing.T) {
 
 	countriesNotSupportingIban := map[string]struct{}{
 		"CN": {},
+		"HK": {},
 	}
 	// Tests generating IBANs for all supported countries
 
