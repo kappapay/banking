@@ -263,6 +263,17 @@ var (
 				bban.NewAccountNumber(10, bban.Num),
 			),
 		},
+		"CI": {
+			Name:       "Ivory Coast",
+			Alpha2Code: "CI",
+			Alpha3Code: "CIV",
+			Structure: bban.NewStructure(
+				bban.NewBankCode(5, bban.AlphaNum),
+				bban.NewBranchCode(5, bban.Num),
+				bban.NewAccountNumber(12, bban.Num),
+				bban.NewNationalCheckDigit(2, bban.Num),
+			),
+		},
 		"GI": {
 			Name:       "Gibraltar",
 			Alpha2Code: "GI",

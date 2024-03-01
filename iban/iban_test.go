@@ -52,6 +52,16 @@ var (
 			nationalCheckDigit: "34",
 		},
 		{
+			iban:               "CI93CI0080111301134291200589",
+			countryCode:        "CI",
+			checkDigit:         "93",
+			bankCode:           "CI008",
+			branchCode:         "01113",
+			accountNumber:      "011342912005",
+			nationalCheckDigit: "89",
+			bban:               "CI0080111301134291200589",
+		},
+		{
 			iban:               "CM2110002000300277976315008",
 			countryCode:        "CM",
 			checkDigit:         "21",
@@ -522,6 +532,14 @@ func TestConstructSucceeds(t *testing.T) {
 			bankCode:           "539",
 			accountNumber:      "0075470",
 			nationalCheckDigit: "34",
+		},
+		{
+			iban:               "CI93CI0080111301134291200589",
+			countryCode:        "CI",
+			bankCode:           "CI008",
+			branchCode:         "01113",
+			accountNumber:      "011342912005",
+			nationalCheckDigit: "89",
 		},
 		{
 			iban:               "CM2110002000300277976315008",
