@@ -117,6 +117,17 @@ var (
 				bban.NewAccountNumber(8, bban.AlphaNum),
 			),
 		},
+		"CG": {
+			Name:       "Republic of the Congo",
+			Alpha2Code: "CG",
+			Alpha3Code: "COG",
+			Structure: bban.NewStructure(
+				bban.NewBankCode(5, bban.Num),
+				bban.NewBranchCode(5, bban.Num),
+				bban.NewAccountNumber(11, bban.Num),
+				bban.NewNationalCheckDigit(2, bban.Num),
+			),
+		},
 		"CM": {
 			Name:       "Cameroon",
 			Alpha2Code: "CM",
