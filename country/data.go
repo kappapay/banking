@@ -256,6 +256,17 @@ var (
 				bban.NewNationalCheckDigit(2, bban.Num),
 			),
 		},
+		"GA": {
+			Name:       "Gabon",
+			Alpha2Code: "GA",
+			Alpha3Code: "GAB",
+			Structure: bban.NewStructure(
+				bban.NewBankCode(5, bban.Num),
+				bban.NewBranchCode(5, bban.Num),
+				bban.NewAccountNumber(11, bban.Num),
+				bban.NewNationalCheckDigit(2, bban.Num),
+			),
+		},
 		"GE": {
 			Name:       "Georgia",
 			Alpha2Code: "GE",
@@ -311,6 +322,17 @@ var (
 				bban.NewBankCode(3, bban.Num),
 				bban.NewBranchCode(4, bban.Num),
 				bban.NewAccountNumber(16, bban.AlphaNum),
+			),
+		},
+		"GQ": {
+			Name:       "Equatorial Guinea",
+			Alpha2Code: "GQ",
+			Alpha3Code: "GNQ",
+			Structure: bban.NewStructure(
+				bban.NewBankCode(5, bban.Num),
+				bban.NewBranchCode(5, bban.Num),
+				bban.NewAccountNumber(11, bban.Num),
+				bban.NewNationalCheckDigit(2, bban.Num),
 			),
 		},
 		"GT": {
@@ -723,6 +745,17 @@ var (
 			Structure: bban.NewStructure(
 				bban.NewBankCode(5, bban.Num),
 				bban.NewAccountNumber(12, bban.AlphaNum),
+			),
+		},
+		"TD": {
+			Name:       "Chad",
+			Alpha2Code: "TD",
+			Alpha3Code: "TCD",
+			Structure: bban.NewStructure(
+				bban.NewBankCode(5, bban.Num),
+				bban.NewBranchCode(5, bban.Num),
+				bban.NewAccountNumber(11, bban.Num),
+				bban.NewNationalCheckDigit(2, bban.Num),
 			),
 		},
 		"TL": {
