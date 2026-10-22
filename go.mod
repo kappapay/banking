@@ -1,6 +1,6 @@
 module github.com/kappapay/banking
 
-go 1.17
+go 1.27.0
 
 require github.com/stretchr/testify v1.7.0
 
